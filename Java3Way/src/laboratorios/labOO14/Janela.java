@@ -5,18 +5,26 @@
  */
 package laboratorios.labOO14;
 
-import com.sun.org.apache.xpath.internal.operations.And;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.ParseException;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -56,18 +64,50 @@ public final class Janela extends javax.swing.JFrame {
         getContentPane().setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        jlAgencia = new JLabel("Código da Agência");
-        jlAgencia.setBounds(10, 10, 110, 18);
+        jlAgencia = new JLabel("Cód. da Agência:");
+        jlAgencia.setBounds(10, 10, 120, 22);
         add(jlAgencia);
         jtfAgencia = new JTextField();
-        jtfAgencia.setBounds(125, 10, 50, 20);
+        try {
+            jtfAgencia = new JFormattedTextField(new MaskFormatter("####-#"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        jtfAgencia.setBounds(120, 10, 60, 25);
+        jtfAgencia.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfAgencia.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfAgencia.setBackground(Color.WHITE);
+            }
+        });
         add(jtfAgencia);
 
-        jlConta = new JLabel("Número da Conta:");
-        jlConta.setBounds(205, 10, 105, 18);
+        jlConta = new JLabel("Nª da Conta:");
+        jlConta.setBounds(230, 10, 105, 22);
         add(jlConta);
         jtfConta = new JTextField();
-        jtfConta.setBounds(315, 10, 60, 20);
+        try {
+            jtfConta = new JFormattedTextField(new MaskFormatter("#####-#"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        jtfConta.setBounds(315, 10, 60, 25);
+        jtfConta.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfConta.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfConta.setBackground(Color.WHITE);
+            }
+        });
         add(jtfConta);
 
         jSeparator01 = new JSeparator();
@@ -75,71 +115,150 @@ public final class Janela extends javax.swing.JFrame {
         add(jSeparator01);
 
         jlNome = new JLabel("Nome:");
-        jlNome.setBounds(10, 50, 60, 18);
+        jlNome.setBounds(10, 50, 60, 22);
         jlNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jlNome);
         jtfNome = new JTextField();
-        jtfNome.setBounds(75, 50, 300, 20);
+        jtfNome.setBounds(75, 50, 300, 25);
+        jtfNome.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfNome.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfNome.setBackground(Color.WHITE);
+            }
+        });
         add(jtfNome);
 
         jlEndereco = new JLabel("Endereço:");
-        jlEndereco.setBounds(10, 75, 60, 18);
+        jlEndereco.setBounds(10, 75, 60, 22);
         jlEndereco.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jlEndereco);
         jtfEndereco = new JTextField();
-        jtfEndereco.setBounds(75, 75, 300, 20);
+        jtfEndereco.setBounds(75, 75, 300, 25);
+        jtfEndereco.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfEndereco.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfEndereco.setBackground(Color.WHITE);
+            }
+        });
         add(jtfEndereco);
 
         jlTelefone = new JLabel("Telefone:");
-        jlTelefone.setBounds(10, 100, 60, 18);
+        jlTelefone.setBounds(10, 100, 60, 22);
         jlTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jlTelefone);
         jtfTelefone = new JTextField();
-        jtfTelefone.setBounds(75, 100, 300, 20);
+        try {
+            jtfTelefone = new JFormattedTextField(new MaskFormatter("(0xx##)####-####"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        jtfTelefone.setBounds(75, 100, 300, 25);
+        jtfTelefone.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfTelefone.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfTelefone.setBackground(Color.WHITE);
+            }
+        });
         add(jtfTelefone);
 
         jlCpf = new JLabel("CPF:");
-        jlCpf.setBounds(10, 125, 60, 18);
+        jlCpf.setBounds(10, 125, 60, 22);
         jlCpf.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         add(jlCpf);
         jtfCpf = new JTextField();
-        jtfCpf.setBounds(75, 125, 300, 20);
+        try {
+            jtfCpf = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        jtfCpf.setBounds(75, 125, 300, 25);
+        jtfCpf.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                jtfCpf.setBackground(Color.YELLOW);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                jtfCpf.setBackground(Color.WHITE);
+            }
+        });
         add(jtfCpf);
 
-        jrbCorrente = new JRadioButton();
-        jrbCorrente.setBounds(100, 150, 111, 20);
+        jrbCorrente = new JRadioButton("Conta Corrente");
+        jrbCorrente.setBounds(75, 150, 120, 20);
         jrbCorrente.setMnemonic('C');
         jrbCorrente.setSelected(true);
         add(jrbCorrente);
 
-        jrbPoupanca = new JRadioButton();
-        jrbPoupanca.setBounds(225, 150, 118, 20);
+        jrbPoupanca = new JRadioButton("Conta Poupança");
+        jrbPoupanca.setBounds(220, 150, 130, 20);
         jrbPoupanca.setMnemonic('P');
         add(jrbPoupanca);
 
         bgContas = new ButtonGroup();
         bgContas.add(jrbCorrente);
         bgContas.add(jrbPoupanca);
-        
+
         jSeparator02 = new JSeparator();
         jSeparator02.setBounds(10, 180, 365, 10);
         add(jSeparator02);
-        
+
         jbConsultar = new JButton("Consultar");
-        jbConsultar.setBounds(35,190,100,23);
+        jbConsultar.setBounds(35, 190, 100, 30);
         jbConsultar.setMnemonic('S');
+        jbConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jtfAgencia.getText().equals("    - ") || jtfConta.getText().equals("     - ")) {
+                    JOptionPane.showMessageDialog(null, "É necessário informar a agência e a conta", "3Way NetWorks", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
         add(jbConsultar);
-        
+
         jbAtualizar = new JButton("Atualizar");
-        jbAtualizar.setBounds(145,190,100,23);
+        jbAtualizar.setBounds(145, 190, 100, 30);
         jbAtualizar.setMnemonic('A');
         jbAtualizar.setEnabled(false);
         add(jbAtualizar);
-        
+
         jbFechar = new JButton("Fechar");
-        jbFechar.setBounds(225,190,100,23);
+        jbFechar.setBounds(255, 190, 100, 30);
         jbFechar.setMnemonic('F');
+        jbFechar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         add(jbFechar);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent evt) {
+                JOptionPane.showMessageDialog(null, "Programação Java OO", "3Way Networks", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            public void windowClosing() {
+                JOptionPane.showMessageDialog(null, "Obrigado por utilizar nosso sistema.", "3Way Networks", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
     }
 
     private void centralizar() {
@@ -218,8 +337,7 @@ public final class Janela extends javax.swing.JFrame {
 //        });
     }
 
-   
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
